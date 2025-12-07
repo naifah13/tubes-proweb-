@@ -35,7 +35,7 @@
 
     <!-- BUTTON -->
     <button class="btn-primary et-btn" onclick="window.print()">Download / Print</button>
-    <button class="btn-secondary et-back-btn" onclick="location.href='home.html'">
+    <button class="btn-secondary et-back-btn" onclick="location.href='home.php'">
     ← Kembali ke Home
     </button>
 
@@ -73,3 +73,4 @@ document.getElementById("etQR").src =
 
 </body>
 </html>
+
