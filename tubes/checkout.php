@@ -61,9 +61,10 @@ document.getElementById("payNow").onclick = () => {
         return;
     }
 
-    location.href = `payment.html?id=${id}&time=${time}&seats=${seats.join(",")}`;
+    location.href = `payment.php?id=${id}&time=${time}&seats=${seats.join(",")}`;
 };
 </script>
 
 </body>
 </html>
+
