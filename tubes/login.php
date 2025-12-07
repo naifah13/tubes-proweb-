@@ -14,9 +14,10 @@
         <h2>Login</h2>
         <input class="input" type="email" placeholder="Email">
         <input class="input" type="password" placeholder="Password">
-        <a href="home.html" class="btn btn-primary btn-lg auth-btn">Login</a>
+        <a href="home.php" class="btn btn-primary btn-lg auth-btn">Login</a>
     </div>
 </section>
 
 </body>
 </html>
+
