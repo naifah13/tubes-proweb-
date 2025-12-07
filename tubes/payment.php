@@ -81,9 +81,10 @@ document.getElementById("payTotal").innerText = "Total: Rp " + (seats.length * 5
 
 // click handler
 function pay(method) {
-    location.href = `eticket.html?id=${id}&time=${time}&seats=${seats.join(",")}&method=${method}`;
+    location.href = `eticket.php?id=${id}&time=${time}&seats=${seats.join(",")}&method=${method}`;
 }
 </script>
 
 </body>
 </html>
+
