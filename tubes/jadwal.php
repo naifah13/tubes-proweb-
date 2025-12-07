@@ -11,7 +11,7 @@
 <body>
 
 <header class="navbar">
-    <a href="home.html" class="logo">🎬 ShowTix id</a>
+    <a href="home.php" class="logo">🎬 ShowTix id</a>
 </header>
 
 <main class="page-wrapper" id="scheduleContainer"></main>
@@ -50,7 +50,7 @@ movie.showtimes.forEach(cin => {
 
         studio.times.forEach(t => {
             html += `
-                <a href="seat.html?id=${movie.id}&time=${t}" class="time-btn">${t}</a>
+                <a href="seat.php?id=${movie.id}&time=${t}" class="time-btn">${t}</a>
             `;
         });
 
@@ -77,3 +77,4 @@ document.getElementById("cinemaSearch").addEventListener("input", function(){
 
 </body>
 </html>
+
