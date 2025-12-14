@@ -67,4 +67,3 @@ document.getElementById("payNow").onclick = () => {
 
 </body>
 </html>
-
