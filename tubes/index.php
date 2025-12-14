@@ -86,7 +86,7 @@
         <div class="section-header" style="text-align:center;">
             <h2 style="font-size: 100px;">
                 Selamat Datang di
-               <a style="font-size: 25px;">🎬</a> <span class="brand-highlight">Showtix ID </span>
+              <span class="brand-highlight">Showtix ID </span>🎬
             </h2>
             <p style="font-size: 30px;">Pesan tiket film favoritmu dengan mudah dan terpercaya</p>
         </div>
