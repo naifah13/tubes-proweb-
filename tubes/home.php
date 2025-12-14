@@ -19,14 +19,36 @@ session_start();
 
             text-shadow: 0 0 18px rgba(255, 45, 85, 0.6);
         }
+
+        .btn-logout {
+            background: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+        .btn-logout:hover {
+            background: #ff2d55;
+            border-color: #ff2d55;
+            color: #fff;
+        }
     </style>
 </head>
+<script>
+    function confirmLogout() {
+        return confirm("Yakin mau logout?");
+    }
+</script>
 
 <body>
 
     <header class="navbar">
         <div class="navbar-left">
-          <a style="font-size: 25px;">🎬</a>  <a href="home.php" class="logo">ShowTix id</a> 
+            <a style="font-size: 25px;">🎬</a> <a href="home.php" class="logo">ShowTix id</a>
 
             <nav class="nav-links">
                 <a href="#now">Now Showing</a>
@@ -38,7 +60,13 @@ session_start();
             <div class="search-bar">
                 <input type="text" id="searchInput" placeholder="Cari film...">
             </div>
+
+            <form action="logout.php" method="post" style="margin-left: 15px;" onsubmit="return confirmLogout();">
+                <button type="submit" class="btn-logout">Logout</button>
+            </form>
+
         </div>
+
     </header>
 
 

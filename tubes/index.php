@@ -133,7 +133,7 @@
             </div>
         </div>
         <div class="cta-daftar">
-            <a href="daftar.php">Pesan tiket sekarang</a>
+            <a href="login.php">Pesan tiket sekarang</a>
         </div>
     </div>
     <script>
