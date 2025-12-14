@@ -12,5 +12,5 @@ $koneksi  = mysqli_connect($host, $user, $pass, $database);
 
 if($koneksi->connect_error){
 die("koneksi gagal: ".mysqli_connect_error());
-} else echo "Koneksi Berhasil";
+}
 ?>

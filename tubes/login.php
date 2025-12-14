@@ -4,33 +4,36 @@ require_once("koneksi.php");
 
 if (isset($_POST['btn-lg'])) {
 
-    $user_login = $_POST['username'];
-    $pass_login = $_POST['password'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-    $sql = "SELECT * FROM data_pengguna WHERE username = '$user_login'";
-    $query = mysqli_query($koneksi, $sql);
+    $sql = "SELECT * FROM data_pengguna WHERE username = ?";
+    $stmt = mysqli_prepare($koneksi, $sql);
+    mysqli_stmt_bind_param($stmt, "s", $username);
+    mysqli_stmt_execute($stmt);
 
-    if (!$query) {
-        die("Query gagal" . mysqli_error($koneksi));
-    }
+    $result = mysqli_stmt_get_result($stmt);
+    $user = mysqli_fetch_assoc($result);
 
-    $user = "";
-    $pass = "";
+    if ($user && password_verify($password, $user['password'])) {
 
-    while ($row = mysqli_fetch_array($query)) {
-        $user = $row['username'];
-        $pass = $row['password'];
-    }
+        $_SESSION['user_id']  = $user['id'];
+        $_SESSION['username'] = $user['username'];
+        $_SESSION['role']     = $user['role'];
 
-    if ($user_login == $user && password_verify($pass_login, $pass)) {
-        $_SESSION['username'] = $user;
-        header("Location: home.php");
+        if ($user['role'] === 'admin') {
+            header("Location: admin/dashboard_home.php");
+        } else {
+            header("Location: home.php");
+        }
         exit;
+
     } else {
         $login_error = true;
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -57,6 +60,11 @@ if (isset($_POST['btn-lg'])) {
             <button type="submit" name="btn-lg" class="btn btn-primary btn-lg auth-btn">
                 Login
             </button>
+
+            <p style="font-size:12px; text-align:center; opacity:0.6; margin-top:10px;">
+                Login untuk user & admin
+            </p>
+
         </form>
 
         <p style="margin-top: 20px; font-size: 14px; text-align:center;">
