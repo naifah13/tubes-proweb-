@@ -79,6 +79,14 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin') {
             color: rgba(255,255,255,0.8);
             margin-bottom: 15px;
         }
+        .logo {
+
+            background: linear-gradient(90deg, #ff2d55, #ff5c8a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            text-shadow: 0 0 18px rgba(255, 45, 85, 0.6);
+        }
     </style>
 </head>
 <body>
@@ -86,7 +94,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin') {
 <!-- NAVBAR -->
 <header class="navbar">
     <div class="navbar-left">
-        <a href="#" class="logo">🎬 ShowTix id</a>
+       <a style="font-size: 25px;">🎬</a> <a href="#" class="logo">ShowTix id</a> 
     </div>
     <div class="navbar-right">
         <span class="badge">ADMIN</span>

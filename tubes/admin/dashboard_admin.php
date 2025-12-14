@@ -15,7 +15,7 @@ require_once "../koneksi.php";
 $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 10;
 $page  = isset($_GET['page'])  ? (int)$_GET['page']  : 1;
 
-$limit = in_array($limit, [5,10,15,30]) ? $limit : 10;
+$limit = in_array($limit, [5, 10, 15, 30]) ? $limit : 10;
 $page  = $page < 1 ? 1 : $page;
 
 $offset = ($page - 1) * $limit;
@@ -34,6 +34,7 @@ $query = mysqli_query($koneksi, "
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <title>Admin Dashboard – ShowTix id</title>
@@ -53,9 +54,9 @@ $query = mysqli_query($koneksi, "
         }
 
         .admin-sidebar {
-            background: rgba(15,15,20,0.9);
+            background: rgba(15, 15, 20, 0.9);
             backdrop-filter: blur(10px);
-            border-right: 1px solid rgba(255,255,255,0.08);
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
             padding: 30px 20px;
         }
 
@@ -84,7 +85,7 @@ $query = mysqli_query($koneksi, "
         }
 
         .admin-card {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 16px;
             padding: 25px;
             backdrop-filter: blur(8px);
@@ -96,10 +97,11 @@ $query = mysqli_query($koneksi, "
             margin-top: 20px;
         }
 
-        th, td {
+        th,
+        td {
             padding: 14px;
             text-align: left;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         th {
@@ -136,13 +138,13 @@ $query = mysqli_query($koneksi, "
             margin: 0 4px;
             border-radius: 6px;
             text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.4);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             color: #fff;
             transition: 0.2s;
         }
 
         .pagination .page-link:hover {
-            background: rgba(255,255,255,0.15);
+            background: rgba(255, 255, 255, 0.15);
         }
 
         .pagination .page-link.active {
@@ -151,111 +153,120 @@ $query = mysqli_query($koneksi, "
             color: #fff;
         }
 
+        .logo {
+
+            background: linear-gradient(90deg, #ff2d55, #ff5c8a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            text-shadow: 0 0 18px rgba(255, 45, 85, 0.6);
+        }
     </style>
 </head>
 
 <body>
 
-<!-- NAVBAR (reuse style) -->
-<header class="navbar">
-    <div class="navbar-left">
-        <a href="#" class="logo">🎬 ShowTix id</a>
-    </div>
-    <div class="navbar-right">
-        <span class="badge">ADMIN</span>
-        <a class="btn btn-outline" href="../logout.php" 
-        onclick="return confirm('Yakin ingin logout?')">Logout
-        </a>
-    </div>
-</header>
-
-<div class="admin-layout">
-
-    <!-- SIDEBAR -->
-    <aside class="admin-sidebar">
-        <h3>Panel Admin</h3>
-
-        <nav class="admin-menu">
-            <a href="dashboard_home.php" class="<?= $current_page=='dashboard_home.php' ? 'active' : '' ?>">Dashboard Admin</a>
-            <a href="dashboard_admin.php" class="<?= $current_page=='dashboard_admin.php' ? 'active' : '' ?>">Data User</a>
-            <a href="#">Data Pembelian</a>
-        </nav>
-
-    </aside>
-
-    <!-- CONTENT -->
-    <main class="admin-content">
-        <div class="section-header">
-            <h2>Data Pengguna</h2>
-            <p>Kelola akun user ShowTix</p>
+    <!-- NAVBAR (reuse style) -->
+    <header class="navbar">
+        <div class="navbar-left">
+            <a style="font-size: 25px;">🎬</a><a href="#" class="logo"> ShowTix id</a>
         </div>
+        <div class="navbar-right">
+            <span class="badge">ADMIN</span>
+            <a class="btn btn-outline" href="../logout.php"
+                onclick="return confirm('Yakin ingin logout?')">Logout
+            </a>
+        </div>
+    </header>
 
-        <div class="admin-card">
-            <form method="GET" style="margin-bottom:15px;">
-                <label style="margin-right:10px;">Tampilkan</label>
+    <div class="admin-layout">
 
-                <select name="limit" onchange="this.form.submit()" class="input" style="width:80px;">
-                    <option value="5"  <?= $limit==5?'selected':'' ?>>5</option>
-                    <option value="10" <?= $limit==10?'selected':'' ?>>10</option>
-                    <option value="15" <?= $limit==15?'selected':'' ?>>15</option>
-                    <option value="30" <?= $limit==30?'selected':'' ?>>30</option>
-                </select>
+        <!-- SIDEBAR -->
+        <aside class="admin-sidebar">
+            <h3>Panel Admin</h3>
 
-                <input type="hidden" name="page" value="1">
-            </form>
+            <nav class="admin-menu">
+                <a href="dashboard_home.php" class="<?= $current_page == 'dashboard_home.php' ? 'active' : '' ?>">Dashboard Admin</a>
+                <a href="dashboard_admin.php" class="<?= $current_page == 'dashboard_admin.php' ? 'active' : '' ?>">Data User</a>
+                <a href="#">Data Pembelian</a>
+            </nav>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Nama Lengkap</th>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th>Aksi</th>
-                        </tr>
-                </thead>
+        </aside>
 
-                <?php $no = 1; ?>
-
-                <tbody>
-                <?php $no = $offset + 1; ?>
-                <?php while ($row = mysqli_fetch_assoc($query)) { ?>
-                <tr>
-                    <td><?= $no++ ?></td>
-                    <td><?= htmlspecialchars($row['nama_lengkap']) ?></td>
-                    <td><?= htmlspecialchars($row['username']) ?></td>
-                    <td><?= htmlspecialchars($row['email']) ?></td>
-                    <td><span class="badge"><?= $row['role'] ?></span></td>
-                    <td>
-                        <a href="edit_user.php?id=<?= $row['id'] ?>" class="action-btn btn-edit">Edit</a>
-                        <a href="delete_user.php?id=<?= $row['id'] ?>" class="action-btn btn-delete delete-btn">Delete</a>
-                    </td>
-                </tr>
-                <?php } ?>
-                </tbody>
-            </table>
-            <div class="pagination">
-            <?php for ($i = 1; $i <= $total_pages; $i++) { ?>
-                <a href="?page=<?= $i ?>&limit=<?= $limit ?>" class="page-link <?= $page == $i ? 'active' : '' ?>">
-                <?= $i ?>
-                </a>
-            <?php } ?>
+        <!-- CONTENT -->
+        <main class="admin-content">
+            <div class="section-header">
+                <h2>Data Pengguna</h2>
+                <p>Kelola akun user ShowTix</p>
             </div>
-        </div>
-    </main>
 
-</div>
+            <div class="admin-card">
+                <form method="GET" style="margin-bottom:15px;">
+                    <label style="margin-right:10px;">Tampilkan</label>
 
-<script>
-document.querySelectorAll('.delete-btn').forEach(btn => {
-    btn.addEventListener('click', function (e) {
-        if (!confirm('Yakin ingin menghapus user ini?')) {
-            e.preventDefault();
-        }
-    });
-});
-</script>
+                    <select name="limit" onchange="this.form.submit()" class="input" style="width:80px;">
+                        <option value="5" <?= $limit == 5 ? 'selected' : '' ?>>5</option>
+                        <option value="10" <?= $limit == 10 ? 'selected' : '' ?>>10</option>
+                        <option value="15" <?= $limit == 15 ? 'selected' : '' ?>>15</option>
+                        <option value="30" <?= $limit == 30 ? 'selected' : '' ?>>30</option>
+                    </select>
+
+                    <input type="hidden" name="page" value="1">
+                </form>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Lengkap</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+
+                    <?php $no = 1; ?>
+
+                    <tbody>
+                        <?php $no = $offset + 1; ?>
+                        <?php while ($row = mysqli_fetch_assoc($query)) { ?>
+                            <tr>
+                                <td><?= $no++ ?></td>
+                                <td><?= htmlspecialchars($row['nama_lengkap']) ?></td>
+                                <td><?= htmlspecialchars($row['username']) ?></td>
+                                <td><?= htmlspecialchars($row['email']) ?></td>
+                                <td><span class="badge"><?= $row['role'] ?></span></td>
+                                <td>
+                                    <a href="edit_user.php?id=<?= $row['id'] ?>" class="action-btn btn-edit">Edit</a>
+                                    <a href="delete_user.php?id=<?= $row['id'] ?>" class="action-btn btn-delete delete-btn">Delete</a>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+                <div class="pagination">
+                    <?php for ($i = 1; $i <= $total_pages; $i++) { ?>
+                        <a href="?page=<?= $i ?>&limit=<?= $limit ?>" class="page-link <?= $page == $i ? 'active' : '' ?>">
+                            <?= $i ?>
+                        </a>
+                    <?php } ?>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <script>
+        document.querySelectorAll('.delete-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (!confirm('Yakin ingin menghapus user ini?')) {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
 
 </body>
+
 </html>
