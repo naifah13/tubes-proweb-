@@ -51,50 +51,67 @@ document.getElementById("seatCinema").innerText = movie.showtimes[0].cinema;
 
 const seatMap = document.getElementById("seatMap");
 
-// generate kursi
-let seats = [];
+// ==========================
+// AMBIL DATA BOOKED (LOCAL)
+// ==========================
+const storageKey = `bookedSeats_movie_${id}_${time}`;
+let bookedSeats = JSON.parse(localStorage.getItem(storageKey)) || [];
+
+// ==========================
+// GENERATE KURSI (SEMUA AVAILABLE)
+// ==========================
 let rows = ["A","B","C","D","E"];
+let selectedSeats = [];
 
 rows.forEach(r => {
     for (let i = 1; i <= 10; i++) {
-        seats.push({code: r + i, booked: Math.random() < 0.2});
+        const code = r + i;
+        const isBooked = bookedSeats.includes(code);
+
+        seatMap.innerHTML += `
+            <div class="seat ${isBooked ? "booked" : "available"}"
+                 data-code="${code}">
+                ${code}
+            </div>
+        `;
     }
 });
 
-// render kursi
-seats.forEach(s => {
-    seatMap.innerHTML += `
-        <div class="seat ${s.booked ? "booked" : "available"}" 
-             data-code="${s.code}" 
-             onclick="toggleSeat(this)">
-            ${s.code}
-        </div>
-    `;
+// ==========================
+// KLIK KURSI
+// ==========================
+document.querySelectorAll(".seat").forEach(seat => {
+    seat.addEventListener("click", () => {
+        if (seat.classList.contains("booked")) return;
+
+        seat.classList.toggle("selected");
+        const code = seat.dataset.code;
+
+        if (selectedSeats.includes(code)) {
+            selectedSeats = selectedSeats.filter(s => s !== code);
+        } else {
+            selectedSeats.push(code);
+        }
+    });
 });
 
-let selectedSeats = [];
-
-function toggleSeat(el) {
-    if (el.classList.contains("booked")) return;
-
-    el.classList.toggle("selected");
-
-    let code = el.dataset.code;
-    if (selectedSeats.includes(code)) {
-        selectedSeats = selectedSeats.filter(x => x !== code);
-    } else {
-        selectedSeats.push(code);
-    }
-}
-
+// ==========================
+// CHECKOUT
+// ==========================
 document.getElementById("checkoutBtn").onclick = () => {
     if (selectedSeats.length === 0) {
         alert("Pilih kursi dulu yaa 🤍");
         return;
     }
+
+    // simpan kursi ke booked
+    bookedSeats = [...new Set([...bookedSeats, ...selectedSeats])];
+    localStorage.setItem(storageKey, JSON.stringify(bookedSeats));
+
     location.href = `checkout.php?id=${id}&time=${time}&seats=${selectedSeats.join(",")}`;
 };
 </script>
+
 
 </body>
 </html>
