@@ -1,36 +1,28 @@
 <?php
-$current_page = basename($_SERVER['PHP_SELF']); // ambil nama file yg dibuka
-?>
-<?php
 session_start();
 
 if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../login.php");
     exit;
 }
-?>
-<?php
+
 require_once "../koneksi.php";
 
-$limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 10;
-$page  = isset($_GET['page'])  ? (int)$_GET['page']  : 1;
-
-$limit = in_array($limit, [5, 10, 15, 30]) ? $limit : 10;
-$page  = $page < 1 ? 1 : $page;
-
-$offset = ($page - 1) * $limit;
-
-$total_query = mysqli_query($koneksi, "SELECT COUNT(*) AS total FROM data_pengguna");
-$total_data  = mysqli_fetch_assoc($total_query)['total'];
-$total_pages = ceil($total_data / $limit);
-
 $query = mysqli_query($koneksi, "
-    SELECT id, nama_lengkap, username, email, role
-    FROM data_pengguna
-    LIMIT $limit OFFSET $offset
+    SELECT 
+        id,
+        user_name,
+        movie_title,
+        cinema_name,
+        showtime,
+        seat,
+        total_price,
+        payment_method,
+        created_at
+    FROM data_pembelian
+    ORDER BY created_at DESC
 ");
 ?>
-
 
 <!DOCTYPE html>
 <html lang="id">
@@ -186,9 +178,9 @@ $query = mysqli_query($koneksi, "
             <h3>Panel Admin</h3>
 
             <nav class="admin-menu">
-                <a href="dashboard_home.php" class="<?= $current_page == 'dashboard_home.php' ? 'active' : '' ?>">Dashboard Admin</a>
-                <a href="dashboard_admin.php" class="<?= $current_page == 'dashboard_admin.php' ? 'active' : '' ?>">Data User</a>
-                <a href="dashboard_pembelian.php" class="<?= $current_page == 'dashboard_pembelian.php' ? 'active' : '' ?>">Data Pembelian</a>
+                <a href="dashboard_home.php">Dashboard Admin</a>
+                <a href="dashboard_admin.php">Data User</a>
+                <a href="dashboard_pembelian.php" class="active">Data Pembelian</a>
             </nav>
 
         </aside>
@@ -196,62 +188,47 @@ $query = mysqli_query($koneksi, "
         <!-- CONTENT -->
         <main class="admin-content">
             <div class="section-header">
-                <h2>Data Pengguna</h2>
-                <p>Kelola akun user ShowTix</p>
+                <h2>Data Pembelian</h2>
+                <p>Riwayat transaksi pengguna ShowTix</p>
             </div>
 
             <div class="admin-card">
-                <form method="GET" style="margin-bottom:15px;">
-                    <label style="margin-right:10px;">Tampilkan</label>
-
-                    <select name="limit" onchange="this.form.submit()" class="input" style="width:80px;">
-                        <option value="5" <?= $limit == 5 ? 'selected' : '' ?>>5</option>
-                        <option value="10" <?= $limit == 10 ? 'selected' : '' ?>>10</option>
-                        <option value="15" <?= $limit == 15 ? 'selected' : '' ?>>15</option>
-                        <option value="30" <?= $limit == 30 ? 'selected' : '' ?>>30</option>
-                    </select>
-
-                    <input type="hidden" name="page" value="1">
-                </form>
-
                 <table>
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Lengkap</th>
-                            <th>Username</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th>Aksi</th>
+                            <th>User</th>
+                            <th>Film</th>
+                            <th>Bioskop</th>
+                            <th>Jam</th>
+                            <th>Kursi</th>
+                            <th>Total</th>
+                            <th>Metode</th>
+                            <th>Tanggal Pemesanan</th>
+                            <th>Hapus</th>
                         </tr>
                     </thead>
 
-                    <?php $no = 1; ?>
-
                     <tbody>
-                        <?php $no = $offset + 1; ?>
-                        <?php while ($row = mysqli_fetch_assoc($query)) { ?>
-                            <tr>
-                                <td><?= $no++ ?></td>
-                                <td><?= htmlspecialchars($row['nama_lengkap']) ?></td>
-                                <td><?= htmlspecialchars($row['username']) ?></td>
-                                <td><?= htmlspecialchars($row['email']) ?></td>
-                                <td><span class="badge"><?= $row['role'] ?></span></td>
-                                <td>
-                                    <a href="edit_user.php?id=<?= $row['id'] ?>" class="action-btn btn-edit">Edit</a>
-                                    <a href="delete_user.php?id=<?= $row['id'] ?>" class="action-btn btn-delete delete-btn">Delete</a>
-                                </td>
-                            </tr>
-                        <?php } ?>
+                    <?php $no = 1; ?>
+                    <?php while ($row = mysqli_fetch_assoc($query)) { ?>
+                        <tr>
+                            <td><?= $no++ ?></td>
+                            <td><?= htmlspecialchars($row['user_name']) ?></td>
+                            <td><?= htmlspecialchars($row['movie_title']) ?></td>
+                            <td><?= htmlspecialchars($row['cinema_name']) ?></td>
+                            <td><?= htmlspecialchars($row['showtime']) ?></td>
+                            <td><?= htmlspecialchars($row['seat']) ?></td>
+                            <td>Rp <?= number_format($row['total_price'],0,',','.') ?></td>
+                            <td><span class="badge"><?= $row['payment_method'] ?></span></td>
+                            <td><?= date('d/m/Y H:i', strtotime($row['created_at'])) ?></td>
+                            <td>
+                                <a href="delete_pembelian.php?id=<?= $row['id'] ?>" class="action-btn btn-delete delete-btn">Delete</a>
+                            </td>
+                        </tr>
+                    <?php } ?>
                     </tbody>
                 </table>
-                <div class="pagination">
-                    <?php for ($i = 1; $i <= $total_pages; $i++) { ?>
-                        <a href="?page=<?= $i ?>&limit=<?= $limit ?>" class="page-link <?= $page == $i ? 'active' : '' ?>">
-                            <?= $i ?>
-                        </a>
-                    <?php } ?>
-                </div>
             </div>
         </main>
 

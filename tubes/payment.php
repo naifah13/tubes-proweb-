@@ -12,6 +12,15 @@
 
 <div class="pay-wrapper">
 
+<form id="paymentForm" action="process_payment.php" method="POST">
+    <input type="hidden" name="movie"  id="fMovie">
+    <input type="hidden" name="cinema" id="fCinema">
+    <input type="hidden" name="fTime" id="fTime">
+    <input type="hidden" name="seats"  id="fSeat">
+    <input type="hidden" name="total"  id="fTotal">
+    <input type="hidden" name="method" id="fMethod">
+</form>
+
     <h2>Pilih Metode Pembayaran</h2>
 
     <!-- Film Info -->
@@ -81,7 +90,14 @@ document.getElementById("payTotal").innerText = "Total: Rp " + (seats.length * 5
 
 // click handler
 function pay(method) {
-    location.href = `eticket.php?id=${id}&time=${time}&seats=${seats.join(",")}&method=${method}`;
+    document.getElementById("fMovie").value  = movie.title;
+    document.getElementById("fCinema").value = movie.showtimes[0].cinema;
+    document.getElementById("fTime").value   = time;
+    document.getElementById("fSeat").value   = seats.join(",");
+    document.getElementById("fTotal").value  = seats.length * 50000;
+    document.getElementById("fMethod").value = method.toUpperCase();
+
+    document.getElementById("paymentForm").submit();
 }
 </script>
 

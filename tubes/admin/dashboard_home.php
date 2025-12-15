@@ -111,7 +111,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin') {
         <nav class="admin-menu">
             <a href="dashboard_home.php" class="active">Dashboard Admin</a>
             <a href="dashboard_admin.php">Data User</a>
-            <a href="#">Data Pembelian</a>
+            <a href="dashboard_pembelian.php">Data Pembelian</a>
         </nav>
     </aside>
 
