@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>E-Ticket QR</title>
+
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: 'Bebas Neue', sans-serif;
+        background: radial-gradient(circle at top, #1b1f3b, #050510);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .ticket {
+        background: linear-gradient(180deg, #0f132b, #080a18);
+        border-radius: 24px;
+        padding: 36px 30px;
+        width: 300px;
+        text-align: center;
+        box-shadow: 0 25px 60px rgba(255, 45, 85, 0.35);
+    }
+
+    .badge {
+        display: inline-block;
+        padding: 8px 20px;
+        border-radius: 20px;
+        background: linear-gradient(135deg, #ff2d55, #ff5c8a);
+        color: #fff;
+        letter-spacing: 1px;
+        margin-bottom: 24px;
+        font-size: 18px;
+    }
+
+    .qr-box {
+        background: #ffffff;
+        padding: 18px;
+        border-radius: 18px;
+        margin: 0 auto 24px;
+        width: 220px;
+    }
+
+    .qr-box img {
+        width: 100%;
+        display: block;
+    }
+
+    .qr-text {
+        color: #000;
+        margin-top: 10px;
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+    .footer-text {
+        margin-top: 10px;
+        font-size: 14px;
+        color: #aaa;
+        letter-spacing: 1px;
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="ticket">
+
+    <div class="badge">E-TICKET</div>
+
+    <div class="qr-box">
+        <img src="images/qr.png">
+        <div class="qr-text">SCAN DI BIOSKOP</div>
+    </div>
+
+    <div class="footer-text">
+        ShowTix ID
+    </div>
+
+</div>
+
+</body>
+</html>
