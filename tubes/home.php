@@ -115,6 +115,35 @@ function confirmLogout() {
 
         <div class="slider-dots" id="sliderDots"></div>
     </section>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const slider = document.getElementById("movieSlider");
+    const cardWidth = 260;
+
+    document.getElementById("slideRight").onclick = () => {
+        slider.style.transition = "0.35s ease";
+        slider.style.transform = `translateX(-${cardWidth}px)`;
+
+        setTimeout(() => {
+            slider.style.transition = "none";
+            slider.style.transform = "translateX(0)";
+            slider.appendChild(slider.firstElementChild);
+        }, 350);
+    };
+
+    document.getElementById("slideLeft").onclick = () => {
+        slider.style.transition = "none";
+        slider.insertBefore(slider.lastElementChild, slider.firstElementChild);
+        slider.style.transform = `translateX(-${cardWidth}px)`;
+
+        setTimeout(() => {
+            slider.style.transition = "0.35s ease";
+            slider.style.transform = "translateX(0)";
+        }, 10);
+    };
+});
+</script>
+
 
     <!-- COMING SOON -->
     <section id="coming" class="section">
