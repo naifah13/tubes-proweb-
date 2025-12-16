@@ -8,6 +8,19 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin') {
 
 require_once "../koneksi.php";
 
+$limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 10;
+$page  = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+$limit = in_array($limit, [5,10,15,30]) ? $limit : 10;
+$page  = $page < 1 ? 1 : $page;
+
+$offset = ($page - 1) * $limit;
+
+// hitung total data
+$total_query = mysqli_query($koneksi, "SELECT COUNT(*) AS total FROM data_pembelian");
+$total_data  = mysqli_fetch_assoc($total_query)['total'];
+$total_pages = ceil($total_data / $limit);
+
 $query = mysqli_query($koneksi, "
     SELECT 
         id,
@@ -21,6 +34,7 @@ $query = mysqli_query($koneksi, "
         created_at
     FROM data_pembelian
     ORDER BY created_at DESC
+    LIMIT $limit OFFSET $offset
 ");
 ?>
 
@@ -193,6 +207,19 @@ $query = mysqli_query($koneksi, "
             </div>
 
             <div class="admin-card">
+                <form method="GET" style="margin-bottom:15px;">
+                    <label style="margin-right:10px;">Tampilkan</label>
+
+                    <select name="limit" onchange="this.form.submit()" class="input" style="width:80px;">
+                        <option value="5" <?= $limit == 5 ? 'selected' : '' ?>>5</option>
+                        <option value="10" <?= $limit == 10 ? 'selected' : '' ?>>10</option>
+                        <option value="15" <?= $limit == 15 ? 'selected' : '' ?>>15</option>
+                        <option value="30" <?= $limit == 30 ? 'selected' : '' ?>>30</option>
+                    </select>
+
+                    <input type="hidden" name="page" value="1">
+                </form>
+
                 <table>
                     <thead>
                         <tr>
@@ -210,7 +237,7 @@ $query = mysqli_query($koneksi, "
                     </thead>
 
                     <tbody>
-                    <?php $no = 1; ?>
+                    <?php $no = $offset + 1; ?>
                     <?php while ($row = mysqli_fetch_assoc($query)) { ?>
                         <tr>
                             <td><?= $no++ ?></td>
@@ -229,6 +256,13 @@ $query = mysqli_query($koneksi, "
                     <?php } ?>
                     </tbody>
                 </table>
+                <div class="pagination">
+                    <?php for ($i = 1; $i <= $total_pages; $i++) { ?>
+                        <a href="?page=<?= $i ?>&limit=<?= $limit ?>" class="page-link <?= $page == $i ? 'active' : '' ?>">
+                            <?= $i ?>
+                        </a>
+                    <?php } ?>
+                </div>
             </div>
         </main>
 
@@ -237,7 +271,7 @@ $query = mysqli_query($koneksi, "
     <script>
         document.querySelectorAll('.delete-btn').forEach(btn => {
             btn.addEventListener('click', function(e) {
-                if (!confirm('Yakin ingin menghapus user ini?')) {
+                if (!confirm('Yakin ingin menghapus data pembelian user ini?')) {
                     e.preventDefault();
                 }
             });

@@ -12,14 +12,16 @@
 
 <div class="pay-wrapper">
 
-<form id="paymentForm" action="process_payment.php" method="POST">
-    <input type="hidden" name="movie"  id="fMovie">
+<form id="paymentForm" method="POST" action="process_payment.php">
+    <input type="hidden" name="movie_id" id="fMovieId">
+    <input type="hidden" name="movie_title" id="fMovie">
     <input type="hidden" name="cinema" id="fCinema">
-    <input type="hidden" name="fTime" id="fTime">
-    <input type="hidden" name="seats"  id="fSeat">
-    <input type="hidden" name="total"  id="fTotal">
-    <input type="hidden" name="method" id="fMethod">
+    <input type="hidden" name="showtime" id="fTime">
+    <input type="hidden" name="seat" id="fSeat">
+    <input type="hidden" name="total_price" id="fTotal">
+    <input type="hidden" name="payment_method" id="fMethod">
 </form>
+
 
     <h2>Pilih Metode Pembayaran</h2>
 
@@ -104,8 +106,15 @@ document.getElementById("payTotal").innerText =
 // CLICK HANDLER
 // =======================
 function pay(method) {
-    location.href =
-        `eticket.php?id=${id}&time=${time}&seats=${seats.join(",")}&method=${method}`;
+    document.getElementById("fMovieId").value = id; // ⬅️ INI PENTING
+    document.getElementById("fMovie").value   = movie.title;
+    document.getElementById("fCinema").value  = movie.showtimes[0].cinema;
+    document.getElementById("fTime").value    = time;
+    document.getElementById("fSeat").value    = seats.join(",");
+    document.getElementById("fTotal").value   = seats.length * 50000;
+    document.getElementById("fMethod").value  = method.toUpperCase();
+
+    document.getElementById("paymentForm").submit();
 }
 </script>
 

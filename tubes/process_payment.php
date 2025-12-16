@@ -1,26 +1,23 @@
 <?php
-session_start();
 require_once "koneksi.php";
 
-// AMBIL DATA DARI FORM
-$movie   = $_POST['movie'];
-$cinema  = $_POST['cinema'];
-$showtime = $_POST['fTime'];
-$seats   = $_POST['seats'];
-$total   = $_POST['total'];
-$method  = $_POST['method'];
+$movie_id = $_POST['movie_id'];
+$movie    = $_POST['movie_title'];
+$cinema   = $_POST['cinema'];
+$time     = $_POST['showtime'];
+$seat     = $_POST['seat'];
+$total    = $_POST['total_price'];
+$method   = $_POST['payment_method'];
 
-
-$user = $_SESSION['username'] ?? 'guest';
-
-// INSERT KE DB
+// simpan ke DB
 mysqli_query($koneksi, "
     INSERT INTO data_pembelian
     (user_name, movie_title, cinema_name, showtime, seat, total_price, payment_method)
     VALUES
-    ('$user', '$movie', '$cinema', '$showtime', '$seats', '$total', '$method')
+    ('guest', '$movie', '$cinema', '$time', '$seat', '$total', '$method')
 ");
 
-// REDIRECT KE ETICKET
-header("Location: eticket.php?movie=$movie&cinema=$cinema&time=$time&seats=$seats&method=$method&total=$total");
+// redirect KE ETICKET (ID TIDAK BOLEH HILANG)
+header("Location: eticket.php?id=$movie_id&time=$time&seats=$seat&method=$method");
 exit;
+

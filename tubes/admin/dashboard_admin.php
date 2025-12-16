@@ -226,7 +226,7 @@ $query = mysqli_query($koneksi, "
                         </tr>
                     </thead>
 
-                    <?php $no = 1; ?>
+                    <?php $no = $offset + 1; ?>
 
                     <tbody>
                         <?php $no = $offset + 1; ?>
