@@ -6,6 +6,41 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="data/movies.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        @media print {
+
+    @page {
+        size: 90mm 140mm; 
+        margin: 0;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background: none;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .et-btn,
+    .et-back-btn {
+        display: none !important;
+    }
+
+    .eticket-wrapper {
+        width: 90mm;
+        height: 140mm;
+        background: linear-gradient(135deg, #0b0f2a, #1a103d);
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px;
+    }
+}
+
+    </style>
 </head>
 
 <body>
@@ -20,7 +55,7 @@
 
     <!-- QR CODE -->
     <div class="qr-box">
-        <img id="etQR" class="qr-img">
+        <img src="images/qr.png">
     </div>
 
     <!-- INFO -->
@@ -62,12 +97,7 @@ document.getElementById("etSeat").innerText = "Kursi: " + seats.join(", ");
 document.getElementById("etTotal").innerText =
     "Total: Rp " + (seats.length * 50000).toLocaleString("id-ID");
 document.getElementById("etMethod").innerText = 
-    "Metode Pembayaran: " + method.toUpperCase();
-
-// QR Code Generator (fake for now)
-document.getElementById("etQR").src =
-    "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" +
-    encodeURIComponent(movie.title + " | " + seats.join(", ") + " | " + time);
+    "Metode Pembayaran: " + method.toUpperCase()
 
 </script>
 

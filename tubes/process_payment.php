@@ -10,6 +10,7 @@ $seats   = $_POST['seats'];
 $total   = $_POST['total'];
 $method  = $_POST['method'];
 
+
 $user = $_SESSION['username'] ?? 'guest';
 
 // INSERT KE DB

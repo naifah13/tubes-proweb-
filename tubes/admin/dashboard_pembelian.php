@@ -217,7 +217,7 @@ $query = mysqli_query($koneksi, "
                             <td><?= htmlspecialchars($row['user_name']) ?></td>
                             <td><?= htmlspecialchars($row['movie_title']) ?></td>
                             <td><?= htmlspecialchars($row['cinema_name']) ?></td>
-                            <td><?= htmlspecialchars($row['showtime']) ?></td>
+                            <td><?= date('H:i', strtotime($row['showtime'])) ?></td>
                             <td><?= htmlspecialchars($row['seat']) ?></td>
                             <td>Rp <?= number_format($row['total_price'],0,',','.') ?></td>
                             <td><span class="badge"><?= $row['payment_method'] ?></span></td>
