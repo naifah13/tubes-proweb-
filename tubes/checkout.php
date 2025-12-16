@@ -49,8 +49,15 @@ document.getElementById("coTitle").innerText = movie.title;
 document.getElementById("coCinema").innerText = movie.showtimes[0].cinema;
 document.getElementById("coTime").innerText = "Jam: " + time;
 document.getElementById("coSeat").innerText = "Kursi: " + seats.join(", ");
+// ambil harga dari jadwal
+const hargaTiket = Number(localStorage.getItem("hargaTiket")) || 50000;
+
+// hitung total
+const totalHarga = seats.length * hargaTiket;
+
 document.getElementById("coPrice").innerText =
-    "Total: Rp " + (seats.length * 50000).toLocaleString("id-ID");
+    "Total: Rp " + totalHarga.toLocaleString("id-ID");
+
 
 // ---------------------
 // TOMBOL BAYAR

@@ -51,11 +51,13 @@
     <p class="eticket-badge">E-TICKET</p>
 
     <!-- POSTER -->
-    <img id="etPoster" class="et-poster">
+    <div class="poster-box">
+    <img id="etPoster" class="eticket-poster">
+    </div>
 
     <!-- QR CODE -->
     <div class="qr-box">
-        <img src="images/qr.png">
+        <img id="qrCode" class="qr-code">
     </div>
 
     <!-- INFO -->
@@ -77,28 +79,51 @@
 </div>
 
 <script>
-
+// =======================
 // GET URL PARAMS
+// =======================
 const url = new URLSearchParams(location.search);
 const id = parseInt(url.get("id"));
 const time = url.get("time");
-const seats = url.get("seats").split(",");
+const seats = url.get("seats") ? url.get("seats").split(",") : [];
 const method = url.get("method");
 
+// =======================
+// AMBIL DATA FILM
+// =======================
 const movie = movies.find(m => m.id === id);
 
-// SET POSTER
-document.getElementById("etPoster").src = movie.poster;
+// =======================
+// AMBIL HARGA & TOTAL
+// =======================
+const hargaTiket = Number(localStorage.getItem("hargaTiket")) || 50000;
+const totalHarga = seats.length * hargaTiket;
 
+// =======================
+// TAMPILKAN DATA
+// =======================
+document.getElementById("etPoster").src = movie.poster;
 document.getElementById("etTitle").innerText = movie.title;
 document.getElementById("etCinema").innerText = movie.showtimes[0].cinema;
 document.getElementById("etTime").innerText = "Jam: " + time;
 document.getElementById("etSeat").innerText = "Kursi: " + seats.join(", ");
+document.getElementById("etMethod").innerText = "Metode: " + method;
 document.getElementById("etTotal").innerText =
-    "Total: Rp " + (seats.length * 50000).toLocaleString("id-ID");
-document.getElementById("etMethod").innerText = 
-    "Metode Pembayaran: " + method.toUpperCase()
+    "Total: Rp " + totalHarga.toLocaleString("id-ID");
 
+// =======================
+// GENERATE QR CODE
+// =======================
+const qrText = `
+Film: ${movie.title}
+Jam: ${time}
+Kursi: ${seats.join(", ")}
+Total: Rp ${totalHarga}
+`;
+
+document.getElementById("qrCode").src =
+    "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" +
+    encodeURIComponent(qrText);
 </script>
 
 </body>

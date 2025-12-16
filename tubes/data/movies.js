@@ -18,26 +18,26 @@ const movies = [
             {
                 cinema: "Cinepolis cinemas Sun Plaza",
                 studios: [
-                    { type: "ScreenX 2D", price: "50.000", times: ["10:30", "12:45", "17:30"] },
-                    { type: "Regular 2D", price: "50.000", times: ["11:00", "11:45", "13:15", "14:00", "15:30", "16:15", "20:15"] }
+                    { type: "ScreenX 2D", price: "65000", times: ["10:30", "12:45", "17:30"] },
+                    { type: "Regular 2D", price: "56000", times: ["11:00", "11:45", "13:15", "14:00", "15:30", "16:15", "20:15"] }
                 ]
             },
             {
                 cinema: "Thamrin XXI",
                 studios: [
-                    { type: "IMAX 2D", price: "50.000", times: ["12:45", "14:50", "19:00", "21:05"] }
+                    { type: "IMAX 2D", price: "65000", times: ["12:45", "14:50", "19:00", "21:05"] }
                 ]
             },
             {
                 cinema: "Delipark XXI",
                 studios: [
-                    { type: "2D", price: "50.000", times: ["12:15", "16:30", "20:40"] }
+                    { type: "2D", price: "70000", times: ["12:15", "16:30", "20:40"] }
                 ]
             },
             {
                 cinema: "Cambridge City Square XXI",
                 studios: [
-                    { type: "2D", price: "50.000", times: ["12:20", "14:20", "16:35", "16:50","17:50","18:50", "19:10", "21:15"] }
+                    { type: "2D", price: "50000", times: ["12:20", "14:20", "16:35", "16:50","17:50","18:50", "19:10", "21:15"] }
                 ]
             }
         ]
@@ -58,27 +58,27 @@ const movies = [
             {
                 cinema: "Manhattan XXI",
                 studios: [
-                    { type: "Regular 2D", price: "50.000", times: ["10:00", "12:00", "14:00", "16:00"] }
+                    { type: "Regular 2D", price: "35000", times: ["10:00", "12:00", "14:00", "16:00"] }
                 ]
             },
             {
                 cinema: "Centre Point XXI",
                 studios: [
-                    { type: "Regular 2D", price: "50.000", times: ["12:45", "14:50", "16:55", "20:45"] }
+                    { type: "Regular 2D", price: "65000", times: ["12:45", "14:50", "16:55", "20:45"] }
                 ]
             },
             {
                 cinema: "Delipark IMAX",
                 studios: [
-                    { type: "IMAX 2D", price: "50.000", times: ["12:40", "16:40", "18:50", "21:00"] }
+                    { type: "IMAX 2D", price: "80000", times: ["12:40", "16:40", "18:50", "21:00"] }
                 ]
             },
             {
                 cinema: "Sun Plaza Cinepolis",
                 studios: [
-                    { type: "Regular 2D", price: "50.000", times: ["12:00"] },
-                    { type: "Junior 2D", price: "50.000", times: ["12:45", "15:30", "18:15"] },
-                    { type: "VIP 2D", price: "50.000", times: ["16:30"] }
+                    { type: "Regular 2D", price: "69000", times: ["12:00"] },
+                    { type: "Junior 2D", price: "99000", times: ["12:45", "15:30", "18:15"] },
+                    { type: "VIP 2D", price: "150000", times: ["16:30"] }
                 ]
             }
         ]
@@ -100,13 +100,13 @@ const movies = [
             {
                 cinema: "SuZuYa Mall XXI",
                 studios: [
-                    { type: "Regular 2D", price: "50.000", times: ["11:00", "13:00", "15:00", "17:00"] }
+                    { type: "Regular 2D", price: "30000", times: ["11:00", "13:00", "15:00", "17:00"] }
                 ]
             },
             {
                 cinema: "Focal Point CGV",
                 studios: [
-                    { type: "Regular 2D", price: "50.000", times: ["09:50", "16:30"] }
+                    { type: "Regular 2D", price: "50000", times: ["09:50", "16:30"] }
                 ]
             }
         ]
@@ -128,19 +128,19 @@ const movies = [
             {
                 cinema: "Ringroad Citywalk XXI",
                 studios: [
-                    { type: "Regular 2D", price: "50.000", times: ["10:45", "13:00", "15:30", "18:00"] }
+                    { type: "Regular 2D", price: "45000", times: ["10:45", "13:00", "15:30", "18:00"] }
                 ]
             },
             {
                 cinema: "Hermes XXI",
                 studios: [
-                    { type: "2D", price: "50.000", times: ["14:15", "18:40"] }
+                    { type: "2D", price: "40000", times: ["14:15", "18:40"] }
                 ]
             },
             {
                 cinema: "Plaza Medan Fair Cinepolis",
                 studios: [
-                    { type: "Regular 2D", price: "50.000", times: ["18:00"] }
+                    { type: "Regular 2D", price: "54000", times: ["18:00"] }
                 ]
             }
         ]
@@ -161,7 +161,7 @@ const movies = [
             {
                 cinema: "Centre Point XXI",
                 studios: [
-                    { type: "2D", price: "50.000", times: ["20:50"] }
+                    { type: "2D", price: "65000", times: ["20:50"] }
                 ]
             }
         ]
@@ -182,7 +182,7 @@ const movies = [
             {
                 cinema: "Plaza Medan Fair Cinepolis",
                 studios: [
-                    { type: "Regular 2D", price: "50.000", times: ["10:30"] }
+                    { type: "Regular 2D", price: "54000", times: ["10:30"] }
                 ]
             }
         ]
@@ -203,13 +203,13 @@ const movies = [
             {
                 cinema: "Manhattan XXI",
                 studios: [
-                    { type: "IMAX 2D", price: "50.000", times: ["11:00", "14:00", "17:00", "20:00"] }
+                    { type: "IMAX 2D", price: "65000", times: ["11:00", "14:00", "17:00", "20:00"] }
                 ]
             },
             {
                 cinema: "Lippo Plaza Medan Cinepolis",
                 studios: [
-                    { type: "Regular 2D", price: "50.000", times: ["11:00", "14:00", "17:00", "20:00"] }
+                    { type: "Regular 2D", price: "47000", times: ["11:00", "14:00", "17:00", "20:00"] }
                 ]
             }
         ]
@@ -231,19 +231,19 @@ const movies = [
             {
                 cinema: "Ringroad Citywalk XXI",
                 studios: [
-                    { type: "Regular 2D", price: "50.000", times: ["12:00", "14:00", "16:00"] }
+                    { type: "Regular 2D", price: "40000", times: ["12:00", "14:00", "16:00"] }
                 ]
             },
             {
                 cinema: "Hermes XXI",
                 studios: [
-                    { type: "2D", price: "50.000", times: ["14:15", "18:40"] }
+                    { type: "2D", price: "40000", times: ["14:15", "18:40"] }
                 ]
             },
             {
                 cinema: "Delipark IMAX",
                 studios: [
-                    { type: "IMAX 2D", price: "50.000", times: ["11:00", "14:00", "17:00", "20:00"] }
+                    { type: "IMAX 2D", price: "60000", times: ["11:00", "14:00", "17:00", "20:00"] }
                 ]
             }
         ]
@@ -264,21 +264,21 @@ const movies = [
             {
                 cinema: "SuZuYa Mall XXI",
                 studios: [
-                    { type: "Regular 2D", price: "50.000", times: ["10:00", "12:00", "14:00"] }
+                    { type: "Regular 2D", price: "50000", times: ["10:00", "12:00", "14:00"] }
                 ]
             },
             {
                 cinema: "Delipark IMAX",
                 studios: [
-                    { type: "IMAX 2D", price: "50.000", times: ["12:40", "16:40", "18:50", "21:00"] }
+                    { type: "IMAX 2D", price: "80000", times: ["12:40", "16:40", "18:50", "21:00"] }
                 ]
             },
             {
                 cinema: "Sun Plaza Cinepolis",
                 studios: [
-                    { type: "Regular 2D", price: "50.000", times: ["12:00"] },
-                    { type: "Junior 2D", price: "50.000", times: ["12:45", "15:30", "18:15"] },
-                    { type: "VIP 2D", price: "50.000", times: ["16:30"] }
+                    { type: "Regular 2D", price: "69000", times: ["12:00"] },
+                    { type: "Junior 2D", price: "117000", times: ["12:45", "15:30", "18:15"] },
+                    { type: "VIP 2D", price: "150000", times: ["16:30"] }
                 ]
             }
         ]
@@ -299,13 +299,13 @@ const movies = [
             {
                 cinema: "Manhattan Times XXI",
                 studios: [
-                    { type: "Regular 2D", price: "50.000", times: ["13:00", "15:15", "18:30"] }
+                    { type: "Regular 2D", price: "55000", times: ["13:00", "15:15", "18:30"] }
                 ]
             },
             {
                 cinema: "Plaza Medan Fair Cinepolis",
                 studios: [
-                    { type: "Regular 2D", price: "50.000", times: ["10:30"] }
+                    { type: "Regular 2D", price: "54000", times: ["10:30"] }
                 ]
             }
         ]
@@ -326,19 +326,19 @@ const movies = [
             {
                 cinema: "Ringroad Citywalk XXI",
                 studios: [
-                    { type: "Regular 2D", price: "50.000", times: ["11:30", "14:00", "16:30"] }
+                    { type: "Regular 2D", price: "60000", times: ["11:30", "14:00", "16:30"] }
                 ]
             },
             {
                 cinema: "SuZuYa Mall XXI",
                 studios: [
-                    { type: "Regular 2D", price: "50.000", times: ["11:00", "13:00", "15:00", "17:00"] }
+                    { type: "Regular 2D", price: "45000", times: ["11:00", "13:00", "15:00", "17:00"] }
                 ]
             },
             {
                 cinema: "Focal Point CGV",
                 studios: [
-                    { type: "Regular 2D", price: "50.000", times: ["09:50", "16:30"] }
+                    { type: "Regular 2D", price: "50000", times: ["09:50", "16:30"] }
                 ]
             }
         ]
@@ -359,13 +359,13 @@ const movies = [
             {
                 cinema: "AEON Mall JGC - CGV",
                 studios: [
-                    { type: "ScreenX 2D", price: "50.000", times: ["12:00", "15:00", "18:00"] }
+                    { type: "ScreenX 2D", price: "130000", times: ["12:00", "15:00", "18:00"] }
                 ]
             },
             {
                 cinema: "Cambridge City Square Premiere",
                 studios: [
-                    { type: "2D", price: "50.000", times: ["12:15", "16:30", "20:40"] }
+                    { type: "2D", price: "150000", times: ["12:15", "16:30", "20:40"] }
                 ]
             }
         ]

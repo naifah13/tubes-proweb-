@@ -73,31 +73,39 @@
 </div>
 
 <script>
+// =======================
 // GET URL PARAMS
+// =======================
 const url = new URLSearchParams(location.search);
 const id = parseInt(url.get("id"));
 const time = url.get("time");
-const seats = url.get("seats").split(",");
+const seats = url.get("seats") ? url.get("seats").split(",") : [];
 
 const movie = movies.find(m => m.id === id);
 
+// =======================
+// AMBIL HARGA TIKET
+// =======================
+const hargaTiket = Number(localStorage.getItem("hargaTiket")) || 50000;
+const totalHarga = seats.length * hargaTiket;
+
+// =======================
+// TAMPILKAN DATA
+// =======================
 document.getElementById("payPoster").src = movie.poster;
 document.getElementById("payTitle").innerText = movie.title;
 document.getElementById("payCinema").innerText = movie.showtimes[0].cinema;
 document.getElementById("payTime").innerText = "Jam: " + time;
 document.getElementById("paySeat").innerText = "Kursi: " + seats.join(", ");
-document.getElementById("payTotal").innerText = "Total: Rp " + (seats.length * 50000).toLocaleString("id-ID");
+document.getElementById("payTotal").innerText =
+    "Rp " + totalHarga.toLocaleString("id-ID");
 
-// click handler
+// =======================
+// CLICK HANDLER
+// =======================
 function pay(method) {
-    document.getElementById("fMovie").value  = movie.title;
-    document.getElementById("fCinema").value = movie.showtimes[0].cinema;
-    document.getElementById("fTime").value   = time;
-    document.getElementById("fSeat").value   = seats.join(",");
-    document.getElementById("fTotal").value  = seats.length * 50000;
-    document.getElementById("fMethod").value = method.toUpperCase();
-
-    document.getElementById("paymentForm").submit();
+    location.href =
+        `eticket.php?id=${id}&time=${time}&seats=${seats.join(",")}&method=${method}`;
 }
 </script>
 

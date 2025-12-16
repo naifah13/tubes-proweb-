@@ -1467,13 +1467,13 @@ img {
 /* E-TICKET */
 
 .eticket-wrapper {
-    width: 420px;
+    max-width: 420px;
     margin: 40px auto;
-    padding: 25px;
-    background: #0d1324;
-    border-radius: 18px;
+    padding: 28px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 22px;
     text-align: center;
-    color: white;
+    box-shadow: 0 0 40px rgba(255,45,85,0.15);
 }
 
 .eticket-badge {
@@ -1485,6 +1485,22 @@ img {
     margin-bottom: 14px;
 }
 
+.eticket-poster {
+    width: 160px;
+    border-radius: 14px;
+    display: block;
+    margin: 0 auto 20px;
+}
+.eticket-info p {
+    margin: 6px 0;
+    font-size: 14px;
+    color: #ddd;
+}
+.poster-box {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 22px;
+}
 .et-poster {
     width: 150px;
     border-radius: 12px;

@@ -17,7 +17,7 @@
 
         .logo-wrap {
             display: flex;
-            align-items: center;
+            align-items: centerz;
             gap: 10px;
         }
 
@@ -86,7 +86,11 @@
 
                 studio.times.forEach(t => {
                     html += `
-                <a href="seat.php?id=${movie.id}&time=${t}" class="time-btn">${t}</a>
+                <a href="seat.php?id=${movie.id}&time=${t}"
+           class="time-btn"
+           onclick="setHarga('${studio.price}')">
+           ${t}
+        </a>
             `;
                 });
 
@@ -110,6 +114,14 @@
             });
         });
     </script>
+    <script>
+function setHarga(harga) {
+    // bersihin titik & spasi
+    const cleanHarga = harga.replace(/\./g, "").split(" ")[0];
+    localStorage.setItem("hargaTiket", cleanHarga);
+}
+</script>
+
 
 </body>
 
