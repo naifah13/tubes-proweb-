@@ -1,6 +1,6 @@
 <?php
 require_once "koneksi.php";
-
+$movie   = $_POST['movie'];
 $movie_id = $_POST['movie_id'];
 $movie    = $_POST['movie_title'];
 $cinema   = $_POST['cinema'];

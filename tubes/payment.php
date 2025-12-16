@@ -88,7 +88,7 @@ const movie = movies.find(m => m.id === id);
 // =======================
 // AMBIL HARGA TIKET
 // =======================
-const hargaTiket = Number(localStorage.getItem("hargaTiket")) || 50000;
+const hargaTiket = Number(localStorage.getItem("hargaTiket"));
 const totalHarga = seats.length * hargaTiket;
 
 // =======================
@@ -106,12 +106,12 @@ document.getElementById("payTotal").innerText =
 // CLICK HANDLER
 // =======================
 function pay(method) {
-    document.getElementById("fMovieId").value = id; // ⬅️ INI PENTING
+    document.getElementById("fMovieId").value = id; 
     document.getElementById("fMovie").value   = movie.title;
     document.getElementById("fCinema").value  = movie.showtimes[0].cinema;
     document.getElementById("fTime").value    = time;
     document.getElementById("fSeat").value    = seats.join(",");
-    document.getElementById("fTotal").value   = seats.length * 50000;
+    document.getElementById("fTotal").value = totalHarga;
     document.getElementById("fMethod").value  = method.toUpperCase();
 
     document.getElementById("paymentForm").submit();
