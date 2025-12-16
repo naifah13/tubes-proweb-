@@ -20,14 +20,22 @@ session_start();
         }
 
         .btn-logout {
-            background: transparent;
-            border: 1px solid #fff;
-            color: #fff;
-            padding: 8px 14px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: 0.3s ease;
+        background: transparent;
+        border: 1px solid #fff;
+        color: #fff;
+
+        height: 38px;
+        padding: 0 16px;
+
+        border-radius: 999px;
+        cursor: pointer;
+        font-weight: 500;
+
+        display: flex;                
+        align-items: center;          
+        justify-content: center;
+
+        transition: 0.3s ease;
         }
 
         .btn-logout:hover {
@@ -52,8 +60,8 @@ function confirmLogout() {
         <a href="home.php" class="logo">ShowTix id</a>
 
         <nav class="nav-links">
-            <a href="#now">Now Showing</a>
-            <a href="#coming">Coming Soon</a>
+            <a href="home.php">Now Showing</a>
+            <a href="comingsoon.php">Coming Soon</a>
         </nav>
     </div>
 
@@ -144,17 +152,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
-
-    <!-- COMING SOON -->
-    <section id="coming" class="section">
-        <div class="section-header">
-            <h2>Coming Soon</h2>
-            <p>Film-film terbaru yang akan segera tayang.</p>
-        </div>
-
-        <div id="comingGrid" class="coming-soon-grid"></div>
-    </section>
-
 </main>
 
 <!-- SCRIPT NOW SHOWING -->
@@ -219,26 +216,7 @@ updateHero();
 setInterval(updateHero, 5000);
 </script>
 
-<!-- SCRIPT COMING SOON GRID -->
-<script>
-const comingGrid = document.getElementById("comingGrid");
-if (comingGrid) {
-    const comingList = movies.filter(m => m.status === "coming");
-    comingGrid.innerHTML = comingList.map(c => `
-        <div class="coming-card">
-            <div class="coming-poster-wrap">
-                <img src="${c.poster}" class="coming-poster">
-                <div class="coming-overlay">
-                    <span class="coming-date">${c.release}</span>
-                </div>
-            </div>
-            <div class="coming-info">
-                <h3>${c.title}</h3>
-                <p>${c.genre}</p>
-            </div>
-        </div>`).join("");
-}
-</script>
+
 
 <!-- SCRIPT SEARCH-->
 <script>
