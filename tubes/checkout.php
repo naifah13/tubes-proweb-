@@ -31,17 +31,13 @@
 </div>
 
 <script>
-// ---------------------
 // GET DATA DARI URL
-// ---------------------
 const url = new URLSearchParams(location.search);
 const id = parseInt(url.get("id"));
 const time = url.get("time");
 const seats = url.get("seats") ? url.get("seats").split(",") : [];
 
-// ---------------------
 // AMBIL DATA FILM
-// ---------------------
 const movie = movies.find(m => m.id === id);
 
 document.getElementById("coPoster").src = movie.poster;
@@ -59,9 +55,7 @@ document.getElementById("coPrice").innerText =
     "Total: Rp " + totalHarga.toLocaleString("id-ID");
 
 
-// ---------------------
 // TOMBOL BAYAR
-// ---------------------
 document.getElementById("payNow").onclick = () => {
     if (seats.length === 0) {
         alert("Pilih kursi dulu ya sayang ❤️");

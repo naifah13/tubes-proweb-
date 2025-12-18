@@ -26,9 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
-// =======================
 // SEARCH FUNCTION
-// =======================
 document.getElementById("searchInput").addEventListener("keyup", function(e) {
     let q = e.target.value.toLowerCase().trim();
 
