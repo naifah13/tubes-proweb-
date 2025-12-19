@@ -79,6 +79,12 @@ img {
     gap: 24px;
 }
 
+.logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .logo {
     display: flex;
     align-items: center;
@@ -88,8 +94,16 @@ img {
     color: white;
     font-family: 'Bebas Neue', sans-serif;
     text-decoration: none;
-}
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #ff2d55, #ff5c8a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 
+    text-shadow: 0 0 18px rgba(255, 45, 85, 0.6);
+}
+.logo-emoji {
+    font-size: 26px;
+}
 .logo-icon {
     font-size: 26px;
 }
@@ -256,6 +270,30 @@ img {
     font-size: 12px;
     cursor: pointer;
 }
+.btn-logout {
+        background: transparent;
+        border: 1px solid #fff;
+        color: #fff;
+
+        height: 38px;
+        padding: 0 16px;
+
+        border-radius: 999px;
+        cursor: pointer;
+        font-weight: 500;
+
+        display: flex;                
+        align-items: center;          
+        justify-content: center;
+
+        transition: 0.3s ease;
+        }
+
+        .btn-logout:hover {
+            background: #ff2d55;
+            border-color: #ff2d55;
+            color: #fff;
+        }
 
 /* Layout umum */
 
@@ -1934,7 +1972,6 @@ img {
     font-size: 14px;
     color: #ddd;
 }
-
 
 
 

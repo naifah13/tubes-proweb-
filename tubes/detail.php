@@ -7,38 +7,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="data/movies.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <style>
-        .navbar {
-            display: flex;
-            align-items: center;
-            padding: 16px 24px;
-        }
-
-        .navbar-left {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            /* jarak icon & teks */
-        }
-
-        .nav-icon {
-            font-size: 22px;
-        }
-
-        .logo {
-            font-size: 22px;
-            font-family: 'Bebas Neue', sans-serif;
-            text-decoration: none;
-            color: white;
-        }
-
-        .logo {
-            background: linear-gradient(90deg, #ff2d55, #ff5c8a);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 18px rgba(255, 45, 85, 0.6);
-        }
-    </style>
+    
 </head>
 
 <body>

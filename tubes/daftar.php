@@ -26,11 +26,6 @@ if(isset($_POST['daftar'])){
     <title>Daftar</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <style>
-        body, input, button, h2, p, a {
-            font-family: 'Bebas Neue', sans-serif;
-        }
-    </style>
 </head>
 <body>
 

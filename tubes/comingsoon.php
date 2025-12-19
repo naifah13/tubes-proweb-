@@ -6,37 +6,6 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="data/movies.js"></script>
      <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <style>
-        .navbar {
-            display: flex;
-            align-items: center;
-            padding: 16px 24px;
-            justify-content: flex-start;
-        }
-
-        .logo-wrap {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 26px;
-            text-decoration: none;
-            letter-spacing: 2px;
-
-            background: linear-gradient(90deg, #ff2d55, #ff5c8a);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-
-            text-shadow: 0 0 18px rgba(255, 45, 85, 0.6);
-        }
-
-        .logo-emoji {
-            font-size: 26px;
-        }
-    </style>
     </head>
 
 <body>

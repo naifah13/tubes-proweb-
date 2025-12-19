@@ -11,39 +11,7 @@ session_start();
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="data/movies.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <style>
-        .logo {
-            background: linear-gradient(90deg, #ff2d55, #ff5c8a);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 18px rgba(255, 45, 85, 0.6);
-        }
-
-        .btn-logout {
-        background: transparent;
-        border: 1px solid #fff;
-        color: #fff;
-
-        height: 38px;
-        padding: 0 16px;
-
-        border-radius: 999px;
-        cursor: pointer;
-        font-weight: 500;
-
-        display: flex;                
-        align-items: center;          
-        justify-content: center;
-
-        transition: 0.3s ease;
-        }
-
-        .btn-logout:hover {
-            background: #ff2d55;
-            border-color: #ff2d55;
-            color: #fff;
-        }
-    </style>
+    
 </head>
 
 <script>

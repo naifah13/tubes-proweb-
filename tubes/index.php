@@ -7,76 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-    <style>
-        .hero-poster-card {
-            position: relative;
-        }
-
-        .hero-poster-card img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-        }
-
-        .hero-poster-card img.active {
-            opacity: 1;
-        }
-        .page-wrapper {
-            padding-top: 0 !important;
-        }
-
-        .section-header {
-            margin-bottom: 20px !important;
-        }
-
-        .hero {
-            margin-top: 0 !important;
-        }
-
-        .section-header p {
-            margin-bottom: 70px !important;
-        }
-
-        .brand-highlight {
-            font-size: inherit;
-            font-weight: inherit;
-
-            background: linear-gradient(90deg, #ff2d55, #ff5c8a);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-
-            text-shadow: 0 0 18px rgba(255, 45, 85, 0.6);
-        }
-
-        .cta-daftar {
-            text-align: center;
-            margin-top: 60px;
-        }
-
-        .cta-daftar a {
-            display: inline-block;
-            padding: 14px 36px;
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 22px;
-            color: #fff;
-            text-decoration: none;
-
-            background: linear-gradient(90deg, #ff2d55, #ff5c8a);
-            border-radius: 30px;
-
-            box-shadow: 0 0 25px rgba(255, 45, 85, 0.5);
-            transition: all 0.3s ease;
-        }
-
-        .cta-daftar a:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 40px rgba(255, 45, 85, 0.8);
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/index.css">
+    
 </head>
 
 <body>
