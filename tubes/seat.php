@@ -51,15 +51,11 @@ document.getElementById("seatCinema").innerText = movie.showtimes[0].cinema;
 
 const seatMap = document.getElementById("seatMap");
 
-// ==========================
 // AMBIL DATA BOOKED (LOCAL)
-// ==========================
 const storageKey = `bookedSeats_movie_${id}_${time}`;
 let bookedSeats = JSON.parse(localStorage.getItem(storageKey)) || [];
 
-// ==========================
 // GENERATE KURSI (SEMUA AVAILABLE)
-// ==========================
 let rows = ["A","B","C","D","E"];
 let selectedSeats = [];
 
@@ -77,9 +73,7 @@ rows.forEach(r => {
     }
 });
 
-// ==========================
 // KLIK KURSI
-// ==========================
 document.querySelectorAll(".seat").forEach(seat => {
     seat.addEventListener("click", () => {
         if (seat.classList.contains("booked")) return;
@@ -95,9 +89,7 @@ document.querySelectorAll(".seat").forEach(seat => {
     });
 });
 
-// ==========================
 // CHECKOUT
-// ==========================
 document.getElementById("checkoutBtn").onclick = () => {
     if (selectedSeats.length === 0) {
         alert("Pilih kursi dulu yaa 🤍");

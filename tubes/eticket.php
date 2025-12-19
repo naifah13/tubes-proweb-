@@ -45,41 +45,30 @@
 </div>
 
 <script>
-// =======================
 // GET URL PARAMS
-// =======================
 const url = new URLSearchParams(location.search);
 const id = parseInt(url.get("id"));
 const time = url.get("time");
 const seats = url.get("seats") ? url.get("seats").split(",") : [];
 const method = url.get("method");
 
-// =======================
 // AMBIL DATA FILM
-// =======================
 const movie = movies.find(m => m.id === id);
 
-// =======================
 // AMBIL HARGA & TOTAL
-// =======================
 const hargaTiket = Number(localStorage.getItem("hargaTiket")) || 50000;
 const totalHarga = seats.length * hargaTiket;
 
-// =======================
 // TAMPILKAN DATA
-// =======================
 document.getElementById("etPoster").src = movie.poster;
 document.getElementById("etTitle").innerText = movie.title;
 document.getElementById("etCinema").innerText = movie.showtimes[0].cinema;
 document.getElementById("etTime").innerText = "Jam: " + time;
 document.getElementById("etSeat").innerText = "Kursi: " + seats.join(", ");
 document.getElementById("etMethod").innerText = "Metode: " + method;
-document.getElementById("etTotal").innerText =
-    "Total: Rp " + totalHarga.toLocaleString("id-ID");
+document.getElementById("etTotal").innerText = "Total: Rp " + totalHarga.toLocaleString("id-ID");
 
-// =======================
 // GENERATE QR CODE
-// =======================
 const qrText = `
 Film: ${movie.title}
 Jam: ${time}

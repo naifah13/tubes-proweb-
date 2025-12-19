@@ -1,5 +1,9 @@
 <?php
+session_start();
 require_once "koneksi.php";
+$user_name = $_SESSION['username'];
+
+
 $movie   = $_POST['movie'];
 $movie_id = $_POST['movie_id'];
 $movie    = $_POST['movie_title'];
@@ -14,7 +18,7 @@ mysqli_query($koneksi, "
     INSERT INTO data_pembelian
     (user_name, movie_title, cinema_name, showtime, seat, total_price, payment_method)
     VALUES
-    ('guest', '$movie', '$cinema', '$time', '$seat', '$total', '$method')
+    ('$user_name', '$movie', '$cinema', '$time', '$seat', '$total', '$method')
 ");
 
 // redirect KE ETICKET (ID TIDAK BOLEH HILANG)

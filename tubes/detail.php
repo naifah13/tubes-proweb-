@@ -25,9 +25,7 @@
 
 
     <script>
-        // ================================
         // CEK APA TRAILER BISA DI-EMBED
-        // ================================
         function canEmbed(url) {
             if (!url) return false;
 
@@ -44,19 +42,15 @@
 
             return !blocked.includes(id);
         }
-
-        // ================================
+    
         // LOAD DATA FILM
-        // ================================
         const params = new URLSearchParams(window.location.search);
         const id = parseInt(params.get("id"));
         const movie = movies.find(m => m.id === id);
 
         const container = document.getElementById("detailContainer");
 
-        // ================================
         // TAMPILKAN TRAILER (EMBED / TOMBOL YT)
-        // ================================
         let trailerHTML = "";
 
         if (canEmbed(movie.trailer)) {
@@ -82,9 +76,7 @@
         `;
         }
 
-        // ================================
         // RENDER HALAMAN DETAIL
-        // ================================
         container.innerHTML = `
         <section class="detail-layout">
 

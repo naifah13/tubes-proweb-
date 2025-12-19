@@ -75,9 +75,7 @@
 </div>
 
 <script>
-// =======================
 // GET URL PARAMS
-// =======================
 const url = new URLSearchParams(location.search);
 const id = parseInt(url.get("id"));
 const time = url.get("time");
@@ -85,26 +83,19 @@ const seats = url.get("seats") ? url.get("seats").split(",") : [];
 
 const movie = movies.find(m => m.id === id);
 
-// =======================
 // AMBIL HARGA TIKET
-// =======================
 const hargaTiket = Number(localStorage.getItem("hargaTiket"));
 const totalHarga = seats.length * hargaTiket;
 
-// =======================
 // TAMPILKAN DATA
-// =======================
 document.getElementById("payPoster").src = movie.poster;
 document.getElementById("payTitle").innerText = movie.title;
 document.getElementById("payCinema").innerText = movie.showtimes[0].cinema;
 document.getElementById("payTime").innerText = "Jam: " + time;
 document.getElementById("paySeat").innerText = "Kursi: " + seats.join(", ");
-document.getElementById("payTotal").innerText =
-    "Rp " + totalHarga.toLocaleString("id-ID");
+document.getElementById("payTotal").innerText = "Rp " + totalHarga.toLocaleString("id-ID");
 
-// =======================
 // CLICK HANDLER
-// =======================
 function pay(method) {
     document.getElementById("fMovieId").value = id; 
     document.getElementById("fMovie").value   = movie.title;
